@@ -1,0 +1,38 @@
+n = 100
+
+input(f"Загадай любе число від 1 до {n}. Щоб продовжити натисни ENTER")
+
+ask = ''
+half = round(n / 2)
+
+lower = 0
+higher = n
+
+steps = 0
+
+while True:
+    while True:
+        correct = input(f"Твоє число {half}?. 'Так' чи 'Ні' ")
+        steps += 1
+        if correct != "Так" and correct != "Ні":
+            print("Немає такого варіанту відповіді!")
+        elif correct == "Так":
+            print(f"Я вгадав! Мені знадобилося {steps} кроків")
+            break
+        elif correct == "Ні":
+            ask = input(f"Твоє число більше ніж {half}?. 'Так' чи 'Ні' ")
+            if ask != "Так" and ask != "Ні":
+                print("Немає такого варіанту відповіді!")
+            else:
+                break
+
+    if correct == "Так":
+        break
+            
+            
+    if ask == "Ні":
+        higher = half
+        half = (lower + higher) // 2
+    elif ask == "Так":
+        lower = half
+        half = (lower + higher) // 2
